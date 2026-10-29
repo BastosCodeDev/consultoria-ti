@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<h1>Pedidos de orçamento</h1>
+<%- include('_nav') %>
+<% if (!quotes.length) { %><p class="muted">Ainda não há pedidos.</p><% } else { %>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Data</th><th>Cliente</th><th>Serviço</th><th>Mensagem</th><th>Estado</th></tr></thead>
+    <tbody>
+      <% quotes.forEach(function (q) { %>
+        <tr>
+          <td><%= fmtDate(q.created_at) %></td>
+          <td><%= q.client_name %><br><span class="muted"><%= q.client_email %></span></td>
+          <td><%= q.service_name %></td>
+          <td><%= q.message %></td>
+          <td><span class="tag"><%= statusLabel[q.status] %></span></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>
+<%- include('../partials/footer') %>

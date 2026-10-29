@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<section class="card narrow">
+  <h1>Entrar</h1>
+  <%- include('partials/errors') %>
+  <form method="post" action="/login" novalidate>
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <label>Email <input type="email" name="email" required autocomplete="email" value="<%= values.email || '' %>"></label>
+    <label>Senha <input type="password" name="password" required autocomplete="current-password"></label>
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+  <p class="muted">Ainda não tem conta? <a href="/register">Criar conta</a></p>
+</section>
+<%- include('partials/footer') %>

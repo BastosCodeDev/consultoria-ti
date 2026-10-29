@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+<h1>Painel administrativo</h1>
+<%- include('_nav') %>
+<div class="stats">
+  <div class="card stat"><strong><%= counts.servicos %></strong> serviços</div>
+  <div class="card stat"><strong><%= counts.clientes %></strong> clientes</div>
+  <div class="card stat"><strong><%= counts.pedidos %></strong> pedidos de orçamento</div>
+  <div class="card stat"><strong><%= counts.acessos %></strong> acessos registados</div>
+</div>
+<%- include('../partials/footer') %>

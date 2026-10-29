@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<section class="card narrow">
+  <h1>Pedir orçamento</h1>
+  <%- include('partials/errors') %>
+  <form method="post" action="/pedidos" novalidate>
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <label>Serviço
+      <select name="service_id" required>
+        <option value="">Escolha um serviço</option>
+        <% services.forEach(function (s) { %>
+          <option value="<%= s.id %>" <%= String(values.service_id) === String(s.id) ? 'selected' : '' %>><%= s.name %></option>
+        <% }) %>
+      </select>
+    </label>
+    <label>Descreva o que precisa <textarea name="message" required minlength="10" maxlength="1000"><%= values.message || '' %></textarea></label>
+    <button class="btn" type="submit">Enviar pedido</button>
+  </form>
+</section>
+<%- include('partials/footer') %>

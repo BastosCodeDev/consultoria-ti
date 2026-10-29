@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= locals.title ? title + ' | ' : '' %><%= company.name %></title>
+  <link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="/"><img src="/img/logo.svg" alt="" width="36" height="36"><span><%= company.name %></span></a>
+    <nav aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/servicos">Serviços</a>
+      <% if (user) { %>
+        <a href="/pedidos">Meus pedidos</a>
+        <% if (user.role === 'admin') { %><a href="/admin">Admin</a><% } %>
+        <form action="/logout" method="post" class="inline">
+          <input type="hidden" name="_csrf" value="<%= csrf %>">
+          <button class="link-btn" type="submit">Sair (<%= user.name.split(' ')[0] %>)</button>
+        </form>
+      <% } else { %>
+        <a href="/login">Entrar</a>
+        <a class="btn btn-sm" href="/register">Criar conta</a>
+      <% } %>
+    </nav>
+  </div>
+</header>
+<main class="container">
+<% if (flash) { %><div class="alert alert-<%= flash.type %>" role="status"><%= flash.msg %></div><% } %>

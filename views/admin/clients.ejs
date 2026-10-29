@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+<h1>Clientes</h1>
+<%- include('_nav') %>
+<% if (!clients.length) { %><p class="muted">Ainda não há clientes registados.</p><% } else { %>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>Registado em</th><th>Pedidos</th></tr></thead>
+    <tbody>
+      <% clients.forEach(function (c) { %>
+        <tr><td><%= c.id %></td><td><%= c.name %></td><td><%= c.email %></td><td><%= fmtDate(c.created_at) %></td><td><%= c.total_pedidos %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>
+<%- include('../partials/footer') %>

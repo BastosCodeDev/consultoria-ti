@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<div class="toolbar">
+  <h1>Meus pedidos de orçamento</h1>
+  <a class="btn" href="/pedidos/novo">Novo pedido</a>
+</div>
+<% if (!quotes.length) { %>
+  <p class="muted">Ainda não fez nenhum pedido. <a href="/pedidos/novo">Peça o primeiro orçamento</a>.</p>
+<% } else { %>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Data</th><th>Serviço</th><th>Mensagem</th><th>Estado</th></tr></thead>
+    <tbody>
+      <% quotes.forEach(function (q) { %>
+        <tr>
+          <td><%= fmtDate(q.created_at) %></td>
+          <td><%= q.service_name %></td>
+          <td><%= q.message %></td>
+          <td><span class="tag"><%= statusLabel[q.status] %></span></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>
+<%- include('partials/footer') %>

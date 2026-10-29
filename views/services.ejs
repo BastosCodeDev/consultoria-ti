@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+<h1>Serviços disponíveis</h1>
+<% if (!services.length) { %><p class="muted">Nenhum serviço disponível de momento.</p><% } %>
+<div class="grid">
+  <% services.forEach(function (s) { %>
+    <article class="card">
+      <h3><%= s.name %></h3>
+      <p><%= s.description %></p>
+      <p class="price">A partir de <%= fmtMoney(s.price) %></p>
+      <a class="btn btn-sm" href="/pedidos/novo?servico=<%= s.id %>">Pedir orçamento</a>
+    </article>
+  <% }) %>
+</div>
+<%- include('partials/footer') %>

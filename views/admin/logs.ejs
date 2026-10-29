@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<h1>Registo de acessos</h1>
+<%- include('_nav') %>
+<p class="muted">Últimos 200 eventos.</p>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Data e hora</th><th>Email</th><th>Evento</th><th>IP</th></tr></thead>
+    <tbody>
+      <% logs.forEach(function (l) { %>
+        <tr><td><%= fmtDate(l.created_at) %></td><td><%= l.email %></td><td><span class="tag tag-<%= l.event %>"><%= eventLabel[l.event] %></span></td><td><%= l.ip %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('../partials/footer') %>

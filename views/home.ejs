@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+<section class="hero">
+  <h1><%= company.tagline %></h1>
+  <p><%= company.description %></p>
+  <p>
+    <a class="btn" href="/servicos">Ver serviços</a>
+    <a class="btn btn-outline" href="/pedidos/novo">Pedir orçamento</a>
+  </p>
+</section>
+
+<h2>Serviços</h2>
+<div class="grid">
+  <% services.forEach(function (s) { %>
+    <article class="card">
+      <h3><%= s.name %></h3>
+      <p><%= s.description %></p>
+      <p class="price">A partir de <%= fmtMoney(s.price) %></p>
+    </article>
+  <% }) %>
+</div>
+<p><a href="/servicos">Ver todos os serviços</a></p>
+
+<h2>Os sócios</h2>
+<div class="grid">
+  <% partners.forEach(function (p) { %>
+    <article class="card">
+      <h3><%= p.name %></h3>
+      <p class="role"><%= p.role %></p>
+      <p><%= p.bio %></p>
+      <ul><% p.highlights.forEach(function (h) { %><li><%= h %></li><% }) %></ul>
+    </article>
+  <% }) %>
+</div>
+<%- include('partials/footer') %>

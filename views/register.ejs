@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+<section class="card narrow">
+  <h1>Criar conta</h1>
+  <%- include('partials/errors') %>
+  <form method="post" action="/register" novalidate>
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <label>Nome <input name="name" required maxlength="100" autocomplete="name" value="<%= values.name || '' %>"></label>
+    <label>Email <input type="email" name="email" required maxlength="150" autocomplete="email" value="<%= values.email || '' %>"></label>
+    <label>Senha <input type="password" name="password" required minlength="8" maxlength="72" autocomplete="new-password">
+      <span class="muted">8 a 72 caracteres, com letras e números.</span></label>
+    <label>Repita a senha <input type="password" name="password2" required maxlength="72" autocomplete="new-password"></label>
+    <button class="btn" type="submit">Criar conta</button>
+  </form>
+  <p class="muted">Já tem conta? <a href="/login">Entrar</a></p>
+</section>
+<%- include('partials/footer') %>

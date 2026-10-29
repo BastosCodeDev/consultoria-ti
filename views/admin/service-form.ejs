@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<h1><%= isEdit ? 'Editar serviço' : 'Novo serviço' %></h1>
+<%- include('_nav') %>
+<section class="card narrow">
+  <%- include('../partials/errors') %>
+  <form method="post" action="<%= action %>" novalidate>
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <label>Nome <input name="name" required maxlength="100" value="<%= values.name %>"></label>
+    <label>Descrição <textarea name="description" required maxlength="1000"><%= values.description %></textarea></label>
+    <label>Preço “a partir de” (R$) <input name="price" required inputmode="decimal" value="<%= values.price %>"></label>
+    <button class="btn" type="submit">Guardar</button>
+    <a class="btn btn-outline" href="/admin/servicos">Cancelar</a>
+  </form>
+</section>
+<%- include('../partials/footer') %>
